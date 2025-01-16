@@ -34,8 +34,9 @@ public class UserServiceImpl implements UserService {
     public UserDto updateUser(UserDto userdto, Integer userId) {
         User user=this.UserDtoToUser(userdto);
         User ExistingUser=userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User","Id",userId));
+        System.out.println(ExistingUser.getName());
         ExistingUser.setName(userdto.getName());
-        ExistingUser.setId(userdto.getId());
+        //ExistingUser.setId(userdto.getId());
         ExistingUser.setEmail(userdto.getEmail());
         ExistingUser.setPassword(userdto.getPassword());
         ExistingUser.setAbout(userdto.getAbout());
