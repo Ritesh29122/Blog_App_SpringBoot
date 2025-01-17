@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @NoArgsConstructor
 @Entity
@@ -23,6 +26,9 @@ public class User {
     private String password;
 
     private String about;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts=new ArrayList<>();
 
     public int getId() {
         return id;

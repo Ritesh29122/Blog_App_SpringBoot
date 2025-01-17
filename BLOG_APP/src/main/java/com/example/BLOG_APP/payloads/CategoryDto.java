@@ -1,6 +1,8 @@
 package com.example.BLOG_APP.payloads;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,14 +36,14 @@ public class CategoryDto {
         this.categoryDescription = categoryDescription;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int categoryId;
 
-    @Column(name = "title",length=100,nullable = false)
+    @NotBlank
+    @Size(min = 4, message = "Size should be strictly greater than 4")
     private String categoryTitle;
 
-    @Column(name = "description")
+    @Size(min = 6, message = "Size should be strictly greater than 5")
     private String categoryDescription;
 
 
