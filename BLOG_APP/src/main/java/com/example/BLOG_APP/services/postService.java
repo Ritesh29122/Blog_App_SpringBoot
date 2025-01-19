@@ -4,27 +4,28 @@ import com.example.BLOG_APP.models.Post;
 import com.example.BLOG_APP.payloads.CategoryDto;
 import com.example.BLOG_APP.payloads.PostDto;
 import com.example.BLOG_APP.payloads.UserDto;
+import com.example.BLOG_APP.payloads.postResponse;
 import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
 
 public interface postService {
-    Post createPost(PostDto postDto,Integer user_id, Integer category_id);
+    PostDto createPost(PostDto postDto,Integer user_id, Integer category_id);
 
-    Post updatePost(PostDto postDto, Integer post_id);
+    PostDto updatePost(PostDto postDto, Integer post_id);
 
     void deletePost(Integer post_id);
 
-    List<Post>getAllPosts();
+    postResponse getAllPosts(Integer page_number, Integer page_size);
 
 
 //    List<Post>getAllPostsByCategory(CategoryDto categoryDto);
 //
 //    List<Post>getAllPostsByUser(UserDto userDto);
 
-    Post getAllPostsByCategoryId(Integer category_id);
+    List<PostDto>getAllPostsByCategoryId(Integer category_id);
 
-    Post getAllPostsByUserId(Integer user_id);
+    List<PostDto>getAllPostsByUserId(Integer user_id);
 
-    List<Post>searchPost(String keyword);
+    List<PostDto>searchPost(String keyword);
 }

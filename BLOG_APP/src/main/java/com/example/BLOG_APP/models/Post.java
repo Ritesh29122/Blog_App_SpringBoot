@@ -36,4 +36,59 @@ public class Post {
     @ManyToOne
     private User user;
 
+    public Integer getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(Integer post_id) {
+        this.post_id = post_id;
+    }
+
+    public @NotBlank String getTitle() {
+        return title;
+    }
+
+    public void setTitle(@NotBlank String title) {
+        this.title = title;
+    }
+
+    public @NotBlank String getContent() {
+        return content;
+    }
+
+    public void setContent(@NotBlank String content) {
+        this.content = content;
+    }
+
+    public @NotBlank String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(@NotBlank String imageName) {
+        this.imageName = imageName;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
