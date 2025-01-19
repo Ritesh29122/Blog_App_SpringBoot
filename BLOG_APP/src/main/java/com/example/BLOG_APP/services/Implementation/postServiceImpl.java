@@ -16,6 +16,7 @@
     import org.springframework.data.domain.Pageable;
     import org.springframework.data.domain.PageRequest;
     import org.springframework.data.domain.Page;
+    import org.springframework.data.domain.Sort;
     import org.springframework.stereotype.Service;
 
     import java.util.Date;
@@ -74,8 +75,8 @@
         }
 
         @Override
-        public postResponse getAllPosts(Integer page_number, Integer page_size) {
-            Pageable pageable = PageRequest.of(page_number, page_size);
+        public postResponse getAllPosts(Integer page_number, Integer page_size, String sort_by) {
+            Pageable pageable = PageRequest.of(page_number, page_size, Sort.by(sort_by).ascending());
             Page<Post> pagePost = this.postRepo.findAll(pageable);
             List<Post>allPosts= pagePost.getContent();
             List<PostDto> postDtos=allPosts.stream().map((post)->this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
