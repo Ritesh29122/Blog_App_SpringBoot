@@ -114,9 +114,8 @@
         @Override
         public List<PostDto> searchPost(String keyword) {
             List<Post> posts = this.postRepo.findByTitleContaining(keyword);
-            return posts.stream()
-                    .map(this::postToPostDto)
-                    .toList();
+            List<PostDto>postDtos=posts.stream().map((post)->modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
+            return postDtos;
         }
         public PostDto postToPostDto(Post post){
             return this.modelMapper.map(post,PostDto.class);
