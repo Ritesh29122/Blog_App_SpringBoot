@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -29,6 +30,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts=new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private HashSet<Comment>comments=new HashSet<>();
 
     public int getId() {
         return id;
@@ -68,5 +72,21 @@ public class User {
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public HashSet<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(HashSet<Comment> comments) {
+        this.comments = comments;
     }
 }

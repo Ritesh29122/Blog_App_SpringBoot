@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "posts")
@@ -35,6 +36,9 @@ public class Post {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
+    private HashSet<Comment>comments=new HashSet<>();
 
     public Integer getPost_id() {
         return post_id;
@@ -90,5 +94,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public HashSet<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(HashSet<Comment> comments) {
+        this.comments = comments;
     }
 }
