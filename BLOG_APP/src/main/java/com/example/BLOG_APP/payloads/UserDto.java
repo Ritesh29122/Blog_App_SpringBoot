@@ -1,15 +1,15 @@
 package com.example.BLOG_APP.payloads;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.BLOG_APP.models.Comment;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
 
 
 @NoArgsConstructor
@@ -55,6 +55,8 @@ public class UserDto {
         this.about = about;
     }
 
+
+
     private int id;
 
     @NotBlank(message = "Name cannot be empty")
@@ -69,4 +71,6 @@ public class UserDto {
 
     @NotNull
     private String about;
+
+
 }

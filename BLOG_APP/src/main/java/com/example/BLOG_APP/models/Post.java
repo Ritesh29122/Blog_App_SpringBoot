@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")
@@ -38,7 +39,7 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private HashSet<Comment>comments=new HashSet<>();
+    private Set<Comment> comments=new HashSet<>();
 
     public Integer getPost_id() {
         return post_id;
@@ -96,11 +97,11 @@ public class Post {
         this.user = user;
     }
 
-    public HashSet<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(HashSet<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 }

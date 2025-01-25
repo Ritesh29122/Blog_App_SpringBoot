@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @NoArgsConstructor
@@ -32,7 +33,7 @@ public class User {
     private List<Post> posts=new ArrayList<>();
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private HashSet<Comment>comments=new HashSet<>();
+    private Set<Comment> comments=new HashSet<>();
 
     public int getId() {
         return id;
@@ -82,7 +83,7 @@ public class User {
         this.posts = posts;
     }
 
-    public HashSet<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 

@@ -76,7 +76,12 @@
 
         @Override
         public postResponse getAllPosts(Integer page_number, Integer page_size, String sort_by) {
+            List<String> validSortFields = List.of("post_id", "title", "content", "addedDate");
+            if (!validSortFields.contains(sort_by)) {
+                throw new IllegalArgumentException("Invalid sort field: " + sort_by);
+            }
             Pageable pageable = PageRequest.of(page_number, page_size, Sort.by(sort_by).ascending());
+//            Pageable pageable = PageRequest.of(page_number, page_size, Sort.by(sort_by).ascending());
             Page<Post> pagePost = this.postRepo.findAll(pageable);
             List<Post>allPosts= pagePost.getContent();
             List<PostDto> postDtos=allPosts.stream().map((post)->this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
